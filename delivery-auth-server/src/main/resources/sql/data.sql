@@ -1,3 +1,6 @@
+
+DELETE FROM oauth_client_details;
+
 INSERT INTO user (username, email, password, activated)
 SELECT * FROM (SELECT 'admin', 'admin@admin.com', '$2a$10$r0RFDmpneBVryx.ihHK9gu6FFJQi4nTxQUqzdSTvrPpaKZMxigqpy', true) AS tmp
 WHERE NOT EXISTS (
