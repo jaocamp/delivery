@@ -22,6 +22,8 @@ public class Order implements Serializable {
     @NotNull(message = "Price required")
     private Double price;
 
+    private String code;
+
     public Integer getId() {
         return id;
     }
@@ -44,5 +46,13 @@ public class Order implements Serializable {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }
