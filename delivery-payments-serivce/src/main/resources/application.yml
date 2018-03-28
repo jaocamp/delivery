@@ -1,0 +1,40 @@
+server:
+  port: 9094
+
+eureka:
+  instance:
+    hostname: localhost
+    port: 9091
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
+  server:
+    wait-time-in-ms-when-sync-empty: 3000
+
+spring:
+  jpa:
+    hibernate:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      ddl-auto: validate
+      naming_strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      show_sql: false
+      format_sql: true
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/payments_service
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+    tomcat.max-active: 5
+    tomcat.initial-size: 2
+    tomcat.min-idle: 2
+    tomcat.max-idle: 5
+
+authserver:
+  hostname: http://localhost:9092
+security:
+  oauth2:
+    resource:
+      userInfoUri: ${authserver.hostname}/user
