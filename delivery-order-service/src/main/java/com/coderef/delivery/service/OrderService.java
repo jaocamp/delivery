@@ -16,9 +16,6 @@ public class OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
-    @Autowired
-    private PaymentClient paymentClient;
-
     public Order save(@Validated Order order) {
         order.setCode( UUID.randomUUID().toString() );
         return orderRepository.save(order);
@@ -34,10 +31,5 @@ public class OrderService {
 
     public void delete(Integer id) {
         orderRepository.delete(id);
-    }
-
-    public String checkStatus(Integer id){
-        Order order = orderRepository.findOne( id );
-        return paymentClient.checkStatus( order.getCode() );
     }
 }

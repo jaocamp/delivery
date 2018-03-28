@@ -29,11 +29,6 @@ public class OrderController {
         return ResponseEntity.ok().body(orderService.findAll());
     }
 
-    @RequestMapping(value = "/{id}/status", method = RequestMethod.GET)
-    public ResponseEntity<?> checkStatus(@PathVariable("id") Integer id){
-        return ResponseEntity.ok(orderService.checkStatus( id ));
-    }
-
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> delete(@PathVariable("id") Integer id){
         orderService.delete(id);
